@@ -5,3 +5,4 @@ Applying graph databases to programmes of projects
 
 For a fuller background and description, see https://lawrencerowland.github.io/2020/05/07/Data-models-for-Project-Portfolios.html
 
+![](https://github.com/lawrencerowland/Data-models-for-programmes/blob/master/images/Digital-Transformation-Programme-Education-pared%20back-ego-graph.jpg)
