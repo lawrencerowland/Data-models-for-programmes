@@ -1,14 +1,61 @@
-# Digital Transformation Data model
+# Digital transformation: choose a model file
 
-# Which version of the model ?
+**A guide to the retained 2019–2020 example, revised 1 October 2026.** The scenario draws on public University of East London material and includes guessed details. These are alternative drawings and inputs for discussion, not an adopted institutional model.
 
-[Schema-Option-1](xx) shows the schema, but not the instances. It is a higher-level schema, suitable for those who like to think of relationships between a few types of entity. This would be suitable for most programmes, because it is so general. It can be opened in YEd Desktop, YEd Live or Neo4j. 
+[Read the scenario and three role views](README.md) · [Return to the Library's modelling guide](https://lawrencerowland.github.io/Portfolio-data-model.html#read-the-worked-models)
+
+![A simplified schema groups Strategy, Projects and Operations around programme outcomes.](images/Digital_Programme_simplified_graph_schema.jpg)
+
+*A schema names kinds of things and relationships. The instance drawings below populate such a picture with specific names. This simplified overview has the same ten entity labels and three groups as Option 2; most arrows are unlabelled in the picture.*
+
+## Which version of the model?
+
+The earlier explanation said the author worked from Option 2 towards Option 1 by changing the level of abstraction. That remains part of the experiment's history, but its general-versus-specific ranking does not describe the saved files reliably. **Choose by the distinctions and relationships you want to inspect.** Neither file is established here as the best schema for a real organisation.
+
+### The two schemas
+
+#### [Schema Option 1 — more distinctions and visible relationship names](graph_models/Digital%20Transformation%20Programme%20schema%20only-Option-1.graphml)
+
+Separates Corporate Programmes from IT Programmes; includes Programme Threats and Programme approach. Its 13 entity nodes sit within or beside P3M, Operations and Strategy groups. All 26 edges have visible relationship labels.
+
+Start here to read what the arrows say. Programme Outcomes and Services sit outside the three groups: connections can cross those visual boundaries.
+
+#### [Schema Option 2 — a smaller grouped picture](graph_models/Digital-Transformation-Programme-schema-only-Option-2.graphml)
+
+Combines programmes into one kind and omits Programme Threats and Programme approach. Ten entity nodes, three groups and 21 edges; Services is inside Operations.
+
+The file stores 20 relation values but does not draw their names as edge labels. One additional Operations self-loop has no relation value at all. Do not infer a meaning for every arrow from this overview.
 
 
-[Schema-Option-2](xx) is also a schema-only. It shows a schema that works just as well, but it is at slightly lower level- with more entities relating to the specific organisation it is modelled on. This would be more suitable for working closely with a particular programme team, who think in a concrete way about their particular organisation. Because of this, it is more specific, and less applicable to other organisations and Digital programmes. It can be opened in YEd Desktop, YEd Live or Neo4j. 
+For example, Option 1 lets a reader distinguish an IT programme from a corporate programme. Option 2 simply says Programmes. That is a modelling choice about what to retain in a conversation, not a claim that fewer boxes make a more correct model.
 
-It is worth comparing these two schemas - and seeing how there are  many schemas that are likely to work for a particular situation. In this case, I worked From Option-2 to Option-1, as I looked at the particulars of the organisation, and then moved up a layer of abstraction.  
+The group boxes matter: in Option 2, Services belongs inside the Operations group; in Option 1 it is outside. A connection to Services therefore does not mean the same thing as membership of Operations. The drawings do not establish that these visual groups are a formal class hierarchy.
 
-[Schema-and-instance] is the full data model, with all the specific data for this portfolio example, based upon the schema.It can be opened in YEd Desktop, YEd Live or Neo4j. 
+### The two instance drawings
 
-[Full-model] is the same as the model above, but it can only be opened in YEd Live. This is because it has been developed by working within Neo4j, and then using a YEd tool that is available in Neo4j called Neo4j Explorer - and it uses some special format settings that do not work in YEd live and so dont show node labels. 
+#### [Schema and instance v5 — named examples in nested groups](graph_models/Digital%20Transformation%20Programme%20schema%20and%20instance%20v5.graphml)
+
+150 named instances and 236 relationships, plus 16 visual group boxes. The XML contains 166 nodes when those groups are counted.
+
+The grouped drawing helps distinguish families of things. Group membership and an edge to a neighbour answer different questions. Some entries remain placeholders, including Business Change 1–4 and generic numbered projects.
+
+#### [Neo4j export for yEd Live — a flat exported view](graph_models/DT%20Programme%20graph%20from%20Neo4j%20for%20YEd%20Live.graphml)
+
+150 nodes and 236 relationships, with names, types and styling stored in the export's structured data. It has no nested group boxes.
+
+This is a separate export of the example, not an identical file in a different wrapper. It uses special node styling. A tool that fails to draw its labels has not thereby shown that the names are missing.
+
+
+## What the counts mean
+
+The [historical Cypher input](cypher%20code%20for%20graph%20database/2019%2011%20Digital%20Transformation%20Programme%20Education%20cypher%20input%20LR%20Neo4j.txt) declares 150 nodes and 236 relationships, using 13 node labels. It gives each node an `id` and `name`; its relationships have types but no corresponding properties.
+
+The grouped v5 drawing has 14 distinct relationship labels. The Cypher and flat export have **15 literal relationship types** because `are_delivered_by` and `are_delivered_by_` are separate spellings. Their shared counts therefore do not prove exact equivalence. These original differences have been preserved and identified, rather than silently normalised.
+
+## Reading and editing are separate from execution
+
+All four GraphML files parse as XML. They retain drawing and model information, but that alone does not establish compatibility with a current editor or a working database import. The earlier guide contradicted itself about yEd Live support; that guarantee has been removed. The grouped drawings use yEd-style graphics, while the flat export uses different styling conventions.
+
+Use the [saved pictures and consultation sheets](README.md#operations-services-and-consumers) to read the example without installing anything. For editing, keep an untouched copy of the chosen GraphML source. For database work, inspect the separate Cypher input and its assumptions before considering an import into a disposable database; it is not a scheduling or decision engine. No editor import or database execution was performed for this guide.
+
+[Back to the scenario and role views](README.md) · [Original sponsorship questions](Programme%20Sponsorship%20questions.md) · [Library](https://lawrencerowland.github.io/library.html)

@@ -1,75 +1,89 @@
-# Data-models-for-programmes
+# One transformation programme, three working views
 
-# Purpose 
-Applying graph databases to programmes of projects
+**A retained 2019–2020 modelling example. Reading guide repaired 1 October 2026.**
 
-For a fuller background and description, see https://lawrencerowland.github.io/2020/05/07/Data-models-for-Project-Portfolios.html
+A university is changing its digital services. Strategy colleagues care about objectives and outcomes; operations colleagues care about services and the people using them; project teams care about the changes they must deliver. How can these conversations stay connected without making everybody work from the same crowded picture?
 
-![](https://github.com/lawrencerowland/Data-models-for-programmes/blob/master/images/Digital-Transformation-Programme-Education-pared%20back-ego-graph.jpg)
+## Purpose
 
-# Example
+This example applies a graph data model to that question. It draws on public University of East London material, including its annual report, with guessed projects, services and other details. **It is a toy model and an interview-era working proposal, not a record of the university's actual programme or a current assessment of it.** The original principle remains: suggest, listen and change through discussion with the people who know the organisation.
 
-This is a toy model. Upfront and ongoing discussion with stakeholders. Only then does it become a useful model.
+[Back to the Library's modelling guide](https://lawrencerowland.github.io/Portfolio-data-model.html#read-the-worked-models) · [Library](https://lawrencerowland.github.io/library.html)
 
-- This model tries to ask the question about how to get the Programme Team, the Operations team, and the Strategy team to work separately and jointly on ensuring that a digital programme delivers what all parties expect
+Historical background: [Data models for project portfolios — 7 May 2020](https://lawrencerowland.github.io/library/articles/data-models-for-project-portfolios.html).
 
-- Origin: Modelled around a Digital Transformation Programme, planned for University of East London. Based on public material on their website, particularly their Annual report. Some items like typical projects and services have been guessed where the report does not identify details.
+![Strategy, Projects and Operations are grouped separately in a simplified schema, with Programme Outcomes between them.](images/Digital_Programme_simplified_graph_schema.jpg)
 
-- Instances: 150 nodes and 236 links that fall under a data schema with 13 node types and 14 link types.
+*Start with the kinds of thing, before looking at the named examples. These boxes are visual groups in the drawing; they are not an organisational chart or a demonstrated class hierarchy. The overview omits relationship labels: the file guide explains the differences between the saved schemas.*
 
-- Each node and each link has the following properties: name, id.
+## Choose a way in
 
-- The data sits within a graph database (Neo4j) and therefore extra properties can be added
+- **Understand the model choices:** [compare the two schemas and two instance drawings](READmeForprogrammegraphs.md). The filenames are retained, but the old guide's general-versus-specific ranking is corrected against their actual contents.
+- **Read a role's view:** [operations](#operations-services-and-consumers), [strategy](#strategy-objectives-and-outcomes), or [projects](#projects-and-the-services-they-enable) below. Each pairs a relationship diagram with a named consultation example.
+- **Inspect the working material:** [original notes and tables](#original-working-notes), [sponsorship questions](Programme%20Sponsorship%20questions.md), [three spreadsheet input iterations](spreadsheet-inputs-sequence/), or the [December 2019 print version (PDF)](print-versions/2019%2012%20Programme%20data%20model%20example%20for%20Education%20sector%20LR.pdf).
 
-- This has been populated by cypher query (see cypher folder- it is very easy to run a Neo4jsandbox in the browser (after creating a free account) and copying this cypher query in and pressing the play button. 
+<a id="example"></a>
+## From schema to particular names
 
-- I use the desktop version of Neo4j, and does not require account and which is free, but sandbox gets you started. You
-can run queries on the data from the database.
+A *schema* proposes kinds of things and relationships; an *instance graph* fills those roles with particular names. The preserved [Cypher input](cypher%20code%20for%20graph%20database/2019%2011%20Digital%20Transformation%20Programme%20Education%20cypher%20input%20LR%20Neo4j.txt) declares 150 nodes and 236 relationships, using 13 node labels and 15 literal relationship types. Two relationship spellings differ only by a trailing underscore; the [file guide](READmeForprogrammegraphs.md#what-the-counts-mean) explains that inconsistency. Nodes have supplied `id` and `name` properties; relationships are typed, without corresponding `id` or `name` properties in that input.
 
-# Data model from a Business Operations perspective
-IMAGE TITLES:
-images/Data-model-from-Operations-perspective.png
-																															
-This is the corresponding consultation sheet for reviewing with the various operations teams
-images/Sample-consultation-sheet-for-particular-operations-teams.png
+The three views below are saved illustrations. They help frame conversations about the same example; they do not update one another on this page. A drawn `enable` or `deliver` link records a modelling assumption, rather than proving a benefit or assigning a real organisation's decision rights.
 
-Data model from the strategy perspective
-images/Data-model-from-the-strategy-perspective.png
+<a id="data-model-from-a-business-operations-perspective"></a>
+## Operations: services and consumers
 
-Sample consultation sheet for Strategy team
-Sample-consultation-sheet-for-Strategy-team.png
+**Conversation:** which consumers use which services, who operates them, and which project outputs must an operations team accept?
 
-Project view
-images/project-view.png
+![Operations schema connects Consumers, Operations, Programme Outcomes, Projects and Services; several arrows are bundled, so not every relationship name is visible.](images/Data-model-from-Operations-perspective.png)
 
-Sample consultation sheet for particular projects
-images/Sample-consultation-sheet-for-particular-projects.png
+*The relationship diagram keeps the kinds of thing visible.*
 
-Full model blue print
-images/Full-programme-data-model.png
-https://www.yworks.com/yed-live/?file=https://gist.githubusercontent.com/lawrencerowland/35320891b44b07317cb008526bf08618/raw/2019 12 UEL full graph from Neo4j
+![Named consultation example connects Students with operations teams including HR and Health and Safety, and their services and accepted project.](images/Sample-consultation-sheet-for-particular-operations-teams.png)
 
-Data model from Operations perspective
+*The consultation example supplies names. Its HR and Health & Safety nodes both point through `accept` to Project_6. Those entries are prompts to discuss and correct, not evidence that these teams accepted an actual project.*
 
-![](name//media/image1.png)![](name//media/image2.png)
+## Strategy: objectives and outcomes
 
-Sample consultation sheet for particular operations teams
+**Conversation:** which outcome is supposed to serve an objective, which programme delivers it, and which services does it enable?
 
-Data model from the strategy perspective
+![Strategy relationship diagram connects Accountable Groups, Specific Strategies, Strategic Objectives, Corporate Programmes and Programme Outcomes.](images/Data-model-from-the-strategy-perspective.png)
 
-Sample consultation sheet for Strategy te![](name//media/image3.png)![](name//media/image4.png)![](name//media/image5.png)![](name//media/image6.png)am
+![Named strategy consultation example joins four strategic objectives to Business_Change_4, delivered by the digital transformation programme and linked to Moodle and Lecture_capture.](images/Sample-consultation-sheet-for-Strategy-team.png)
 
-Project view
+*Follow `Business_Change_4`: four strategic objectives point to it through `are_delivered_by`; the digital transformation programme points to it through `deliver`; it points to Moodle and Lecture_capture through `enable`. The placeholder outcome needs a meaningful description before this could guide a decision.*
 
-Sample consultation sheet for particular projects
+## Projects and the services they enable
 
-Full model blue print https://www.yworks.com/yed-live/?file=https://gist.githubuserconte![](name//media/image7.png)nt.com/lawrencerowland/35320891b44b07317cb008526bf08618/raw/2019 12 UEL full graph from Neo4j
+**Conversation:** how do the proposed projects sit within programmes, and how do their intended service changes relate to the outcome discussed by the strategy team?
 
-The graph contains all the particular relationships relevant to the IT Programme.
+![Project relationship diagram shows corporate and IT programmes, projects, work packages, services and programme outcomes.](images/project-view.png)
 
-These can be queried from the graph for presenting to the senior team, when making decisions
+[Inspect the wide project schema at full size](images/project-view.png).
 
-For instance
+![Named project consultation example connects the digital transformation programme to Business_Change_4 and two system-change projects, leading to Moodle and Lecture_capture.](images/Sample-consultation-sheet-for-particular-projects.png)
+
+*Here the same `Business_Change_4`, Moodle and Lecture_capture reappear. Project_4: System_Change_2 points to Moodle, while Project_3: System_Change_1 points to Lecture_capture. Shared names let the conversations meet; the picture supplies neither delivery dates nor a proof that the projects achieve the outcome.*
+
+## Zoom out, or keep the neighbourhood small
+
+![Full saved programme instance drawing with the example's many named entities and relationships.](images/Full-programme-data-model.png)
+
+*The full drawing retains breadth, at the cost of legibility. [Choose an editable source](READmeForprogrammegraphs.md#the-two-instance-drawings) to inspect individual labels.*
+
+![Pared-back neighbourhood view of the digital-transformation programme and its connected entities.](images/Digital-Transformation-Programme-Education-pared%20back-ego-graph.jpg)
+
+*The retained pared-back neighbourhood picture narrows attention; it is not established as a computed one-step ego view. Connected neighbours are not automatically members of the same group; a smaller view also leaves relationships out.*
+
+## Read, edit or run
+
+The pictures and explanations can be read here. The [GraphML files](graph_models/) retain editable drawings; the [file guide](READmeForprogrammegraphs.md) distinguishes their structures and formatting. The Cypher text is the historical database input. It creates records rather than maintaining a live programme or calculating a schedule; its compatibility with current Neo4j versions has not been checked. Opening a GraphML drawing and loading a database are separate steps. No database was run for this reading-guide repair.
+
+## Original working notes
+
+The following proposals, challenges and tables are retained from the original example. They mix public-source names, guesses and interview preparation. Read dated references and evaluative phrases in that historical context, not as verified or current statements about the university. The table itself records the author's caution that much of the proposed approach could be wrong and needs stakeholder discussion.
+
+<details>
+<summary>Read the original working notes and tables</summary>
 
 ACCOUNTABLE GROUPS
 
@@ -259,3 +273,8 @@ Most of the approach elements managed within a suitable work-package of the Prog
 | Programme collaboration           | Use UEL faculty and research                              |
 | Business & transition management  | Involve Business change managers early                    |
 | IT dept interface mgt             | Refresh ITIL compliance                                   |
+
+
+</details>
+
+[Compare the model files](READmeForprogrammegraphs.md) · [Return to the Library](https://lawrencerowland.github.io/library.html)
