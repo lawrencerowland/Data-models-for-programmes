@@ -14,10 +14,18 @@ The earlier explanation said the author worked from Option 2 towards Option 1 by
 
 ### The two schemas
 
-| File | What it makes explicit | What to watch for |
-| --- | --- | --- |
-| [Schema Option 1 — more distinctions and visible relationship names](graph_models/Digital%20Transformation%20Programme%20schema%20only-Option-1.graphml) | Separates Corporate Programmes from IT Programmes; includes Programme Threats and Programme approach. Its 13 entity nodes sit within or beside P3M, Operations and Strategy groups. All 26 edges have visible relationship labels. | Start here to read what the arrows say. Programme Outcomes and Services sit outside the three groups: connections can cross those visual boundaries. |
-| [Schema Option 2 — a smaller grouped picture](graph_models/Digital-Transformation-Programme-schema-only-Option-2.graphml) | Combines programmes into one kind and omits Programme Threats and Programme approach. Ten entity nodes, three groups and 21 edges; Services is inside Operations. | The file stores 20 relation values but does not draw their names as edge labels. One additional Operations self-loop has no relation value at all. Do not infer a meaning for every arrow from this overview. |
+#### [Schema Option 1 — more distinctions and visible relationship names](graph_models/Digital%20Transformation%20Programme%20schema%20only-Option-1.graphml)
+
+Separates Corporate Programmes from IT Programmes; includes Programme Threats and Programme approach. Its 13 entity nodes sit within or beside P3M, Operations and Strategy groups. All 26 edges have visible relationship labels.
+
+Start here to read what the arrows say. Programme Outcomes and Services sit outside the three groups: connections can cross those visual boundaries.
+
+#### [Schema Option 2 — a smaller grouped picture](graph_models/Digital-Transformation-Programme-schema-only-Option-2.graphml)
+
+Combines programmes into one kind and omits Programme Threats and Programme approach. Ten entity nodes, three groups and 21 edges; Services is inside Operations.
+
+The file stores 20 relation values but does not draw their names as edge labels. One additional Operations self-loop has no relation value at all. Do not infer a meaning for every arrow from this overview.
+
 
 For example, Option 1 lets a reader distinguish an IT programme from a corporate programme. Option 2 simply says Programmes. That is a modelling choice about what to retain in a conversation, not a claim that fewer boxes make a more correct model.
 
@@ -25,10 +33,18 @@ The group boxes matter: in Option 2, Services belongs inside the Operations grou
 
 ### The two instance drawings
 
-| File | What is retained | How to read it |
-| --- | --- | --- |
-| [Schema and instance v5 — named examples in nested groups](graph_models/Digital%20Transformation%20Programme%20schema%20and%20instance%20v5.graphml) | 150 named instances and 236 relationships, plus 16 visual group boxes. The XML contains 166 nodes when those groups are counted. | The grouped drawing helps distinguish families of things. Group membership and an edge to a neighbour answer different questions. Some entries remain placeholders, including Business Change 1–4 and generic numbered projects. |
-| [Neo4j export for yEd Live — a flat exported view](graph_models/DT%20Programme%20graph%20from%20Neo4j%20for%20YEd%20Live.graphml) | 150 nodes and 236 relationships, with names, types and styling stored in the export's structured data. It has no nested group boxes. | This is a separate export of the example, not an identical file in a different wrapper. It uses special node styling. A tool that fails to draw its labels has not thereby shown that the names are missing. |
+#### [Schema and instance v5 — named examples in nested groups](graph_models/Digital%20Transformation%20Programme%20schema%20and%20instance%20v5.graphml)
+
+150 named instances and 236 relationships, plus 16 visual group boxes. The XML contains 166 nodes when those groups are counted.
+
+The grouped drawing helps distinguish families of things. Group membership and an edge to a neighbour answer different questions. Some entries remain placeholders, including Business Change 1–4 and generic numbered projects.
+
+#### [Neo4j export for yEd Live — a flat exported view](graph_models/DT%20Programme%20graph%20from%20Neo4j%20for%20YEd%20Live.graphml)
+
+150 nodes and 236 relationships, with names, types and styling stored in the export's structured data. It has no nested group boxes.
+
+This is a separate export of the example, not an identical file in a different wrapper. It uses special node styling. A tool that fails to draw its labels has not thereby shown that the names are missing.
+
 
 ## What the counts mean
 
